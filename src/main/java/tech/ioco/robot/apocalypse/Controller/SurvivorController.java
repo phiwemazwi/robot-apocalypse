@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tech.ioco.robot.apocalypse.Entity.Survivor;
 import tech.ioco.robot.apocalypse.Service.SurvivorService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,5 +29,27 @@ public class SurvivorController {
     public ResponseEntity<Survivor> updateSurvivorLocation(@PathVariable Long id, @RequestParam double latitude, @RequestParam double longitude){
         Survivor updatedSurvivor = survivorService.updateSurvivorLocation(id,latitude,longitude);
         return ResponseEntity.ok(updatedSurvivor);
+    }
+
+
+
+
+
+
+    @GetMapping("/infected-percentage")
+    public ResponseEntity<Double> getInfectedPercentage(){
+        return ResponseEntity.ok(survivorService.getInfectedPercentage());
+    }
+    @GetMapping("/non-infected-percentage")
+    public ResponseEntity<Double> getNonInfectedPercentage(){
+        return  ResponseEntity.ok(survivorService.getNonInfectedPercentage());
+    }
+    @GetMapping("/infected-list")
+    public ResponseEntity<List<Survivor>> getInfected(){
+        return ResponseEntity.ok(survivorService.getInfected());
+    }
+    @GetMapping("/non-infected-list")
+    public ResponseEntity<List<Survivor>> getNoneInfected(){
+        return ResponseEntity.ok(survivorService.getNoneInfected());
     }
 }

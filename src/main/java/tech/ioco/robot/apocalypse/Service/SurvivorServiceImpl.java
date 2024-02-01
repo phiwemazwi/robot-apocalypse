@@ -7,7 +7,7 @@ import tech.ioco.robot.apocalypse.Entity.Survivor;
 import tech.ioco.robot.apocalypse.Repository.SurvivorRepo;
 
 
-
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,5 +36,28 @@ public class SurvivorServiceImpl implements SurvivorService{
         survivor.setLatitude(latitude);
         survivor.setLongitude(longitude);
         return survivorRepo.save(survivor);
+    }
+
+
+    @Override
+    public double getInfectedPercentage(){
+        long totalSurvivors = survivorRepo.count();
+        long infectedSurvivors = survivorRepo.countByInfectionStatus(true);
+        return totalSurvivors > 0 ? (double) infectedSurvivors/totalSurvivors*100:0;
+    }
+    @Override
+    public double getNonInfectedPercentage(){
+        long totalSurvivors = survivorRepo.count();
+        long nonInfectedSurvivors = survivorRepo.countByInfectionStatus(false);
+        return totalSurvivors > 0 ? (double) nonInfectedSurvivors/totalSurvivors*100:0;
+    }
+    @Override
+    public List<Survivor> getInfected(){
+        return survivorRepo.findByInfectionStatus(true);
+    }
+
+    @Override
+    public  List<Survivor> getNoneInfected(){
+        return survivorRepo.findByInfectionStatus(false);
     }
 }
