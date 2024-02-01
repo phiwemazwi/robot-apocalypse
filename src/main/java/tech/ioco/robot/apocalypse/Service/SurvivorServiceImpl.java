@@ -36,6 +36,8 @@ public class SurvivorServiceImpl implements SurvivorService{
         survivor.setLatitude(latitude);
         survivor.setLongitude(longitude);
         return survivorRepo.save(survivor);
+
+
     }
 
 

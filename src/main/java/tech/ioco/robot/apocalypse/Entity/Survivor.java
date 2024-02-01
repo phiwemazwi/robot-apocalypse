@@ -26,9 +26,9 @@ public class Survivor {
     private double longitude;
     private boolean infectionStatus = false;
 
-    @OneToMany(mappedBy = "survivor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "survivor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Resource> resources = new HashSet<>();
 
-    @OneToMany(mappedBy = "reported", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "reported", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Report> reports = new HashSet<>();
 }
