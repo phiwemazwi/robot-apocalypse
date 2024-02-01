@@ -31,4 +31,9 @@ public class Survivor {
 
     @OneToMany(mappedBy = "reported", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Report> reports = new HashSet<>();
+
+    public void addResource(Resource resource){
+        resources.add(resource);
+        resource.setSurvivor(this);
+    }
 }

@@ -3,6 +3,7 @@ package tech.ioco.robot.apocalypse.Service;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tech.ioco.robot.apocalypse.Entity.Resource;
 import tech.ioco.robot.apocalypse.Entity.Survivor;
 import tech.ioco.robot.apocalypse.Repository.SurvivorRepo;
 
@@ -22,6 +23,11 @@ public class SurvivorServiceImpl implements SurvivorService{
 
     @Override
     public Survivor addSurvivor(Survivor survivor){
+        if(survivor.getResources() != null){
+            for (Resource resource : survivor.getResources()){
+                survivor.addResource(resource);
+            }
+        }
         return  survivorRepo.save(survivor);
     }
 
