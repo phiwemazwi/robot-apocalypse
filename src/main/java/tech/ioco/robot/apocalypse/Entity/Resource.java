@@ -1,5 +1,6 @@
 package tech.ioco.robot.apocalypse.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Resource {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "survivorId")
+    @JsonIgnore
     private  Survivor survivor;
 
 }

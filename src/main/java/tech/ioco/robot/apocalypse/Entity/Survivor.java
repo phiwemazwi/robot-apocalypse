@@ -8,25 +8,27 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
 public class Survivor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    private int age;
     private String gender;
+    private int age;
     private double latitude;
     private double longitude;
-    private boolean infectionStatus;
+    private boolean infectionStatus = false;
 
-    @OneToMany(mappedBy = "survivor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "survivor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Resource> resources = new HashSet<>();
 
-    @OneToMany(mappedBy = "reported", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "reported", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Report> reports = new HashSet<>();
 }
