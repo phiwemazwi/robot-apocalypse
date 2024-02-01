@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Entity
 @Getter
@@ -21,6 +22,6 @@ public class Robot {
     private Long id;
     private String model;
     private String serialNumber;
-    private LocalDateTime manufacturedDate;
+    private OffsetDateTime manufacturedDate;
     private String category;
 }
