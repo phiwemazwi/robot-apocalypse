@@ -41,7 +41,7 @@ public class ReportServiceImpl implements ReportService{
             survivorRepo.save(reported);
         }
 
-        //I need to add some way of preventing duplicate reports.
+
 
     }
 }

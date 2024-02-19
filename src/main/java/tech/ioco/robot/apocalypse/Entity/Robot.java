@@ -25,3 +25,4 @@ public class Robot {
     private OffsetDateTime manufacturedDate;
     private String category;
 }
+

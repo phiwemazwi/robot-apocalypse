@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class RobotServiceImpl implements RobotService{
 
-    @Autowired
+
     private final RestTemplate restTemplate;
     private final RobotRepo robotRepo;
     @Autowired
